@@ -1,0 +1,20 @@
+# run miniAOD -> ntuple conversion 
+# requires active proxy -> voms-proxy-init
+
+executable              = run.sh
+universe                = vanilla
+log                     = logs/job_$(cluster)_$(Process).log
+output                  = logs/out_$(cluster)_$(Process).txt
+error                   = logs/err_$(cluster)_$(Process).txt
+should_transfer_files   = Yes
+transfer_input_files    = /tmp/x509up_u7355,poet_cfg.py,PhysObjectExtractorTool,merge_trees.py,run.sh,micromamba_init.sh,micromamba,micromamba_env.tar.gz
+when_to_transfer_output = ON_EXIT
++WantDocker             = true
++docker_image           = "mschnepf/slc6-condocker"
+request_memory          = 4000
+
+#queue
+
+queue arguments from (
+root://eospublic.cern.ch//eos/opendata/cms/mc/RunIIFall15MiniAODv2/TT_TuneCUETP8M1_13TeV-powheg-pythia8/MINIAODSIM//PU25nsData2015v1_76X_mcRun2_asymptotic_v12_ext4-v1//00000/0007DBD0-2ED2-E511-AD0D-20CF3019DEF5.root
+)
